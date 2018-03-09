@@ -1,13 +1,3 @@
-html {
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
 html,
 body {
     width: 100%;
@@ -16,9 +6,16 @@ body {
     padding: 0;
 }
 
+header {
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/round.png');
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -28,82 +25,557 @@ body {
     flex-direction: column;
 }
 
-h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+.title {
+    position: relative;
 }
 
-/*
- * Styles for the deck of cards
- */
+.logo {
+    position: relative;
+    margin-right: 10px;
+    transition: all 1s cubic-bezier(.25, .8, .25, 1);
+}
+
+h1 {
+    position: relative;
+    text-align: right;
+    margin: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    transition: all 1s cubic-bezier(.25, .8, .25, 1);
+}
+
+
+/********************************
+   Styles for the deck of cards
+*********************************/
 
 .deck {
-    width: 660px;
-    min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
+    max-width: 85%;
+    /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/intersection.png');
+    padding: 10px;
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    /*materializecss.com/cards.html*/
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 0 0 3em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
-    background: #2e3d49;
+    height: 60px;
+    width: 60px;
+    margin: 5px;
     font-size: 0;
     color: #ffffff;
+    /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/dark_embroidery.png');
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    z-index: 20;
+    /*materializecss.com/cards.html*/
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+.deck .card:hover {
+    /*materializecss.com/cards.html*/
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+    transform: rotateY(360deg);
     background: #02b3e4;
     cursor: default;
 }
 
 .deck .card.show {
-    font-size: 33px;
+    font-size: 60px;
+}
+
+.deck .card.disabled {
+    pointer-events: none;
 }
 
 .deck .card.match {
     cursor: default;
     background: #02ccba;
-    font-size: 33px;
+    font-size: 60px;
 }
 
-/*
- * Styles for the Score Panel
- */
+.deck .card.unmatched {
+    cursor: default;
+    background: #ed3131;
+}
+
+/********************************
+   Styles for the
+   Score & Level Panel
+   & Stars-showing
+*********************************/
 
 .score-panel {
+    position: relative;
+    top: 0;
     text-align: left;
-    width: 345px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    transition: all 1s cubic-bezier(.25, .8, .25, 1);
 }
 
-.score-panel .stars {
+.score-panel .stars,
+.won-message .win-stars,
+.won-message .level-wstars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    color: #ffd700;
+    text-shadow: 2px 2px 3px #848c94;
 }
 
-.score-panel .stars li {
+.score-panel .stars li,
+.won-message .win-stars li,
+.won-message .level-wstars li {
     list-style: none;
     display: inline-block;
 }
+.progress {
+    margin-right: 15px;
+}
 
-.score-panel .restart {
-    float: right;
+.level-holder {
+    margin: 0 10px 0 0;
+    text-align: right;
+}
+
+.game-options {
+    width: 100%;
+    position: fixed;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5em;
+    transition: all 1s cubic-bezier(.25, .8, .25, 1);
+}
+
+.game-options .start-new,
+.game-options .pause,
+.game-options .restart {
+    /*float: right;*/
+    margin: 10px;
+    cursor: pointer
+}
+
+.game-options .start-new {
+    padding: 10px 15px;
+    font-size: 0.5em;
+    color: #fff;
+    background-color: #222;
+}
+
+.game-options .pause,
+.game-options .restart {
+    padding: 0px 5px;
+    font-size: 1em;
+    color: #222;
+}
+
+.reduced {
+    position: absolute;
+    bottom: 0;
+    font-size: 2em;
+    background: #222;
+    color: #fff;
+    padding: 5px 15px;
+    left: 20px;
+}
+
+/********************************
+   Styles for the Winner Panel,
+   Level-Up Panel, Pause Panel
+*********************************/
+
+.winner-container,
+.level-container,
+.pause-container {
+    position: absolute;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.won-message,
+.pause-message {
+    width: 80%;
+    max-width: 660px;
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    color: #222;
+    border-radius: 4px;
+    /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/hypnotize.png');
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    text-align: center;
+}
+
+.won-message h2,
+ .won-message h3 {
+    margin-top: -10px;
+}
+
+.winner-cup,
+.pause-symbol {
+    color: #31597f;
+    font-size: 8em;
+}
+.winner-cup {
+    margin: -15px 0;
+}
+
+.pause-symbol {
+    margin: -10px 0;
+}
+
+.winner-thumb {
+    color: #31597f;
+    font-size: 6em;
+    margin: -20px 0 -10px 0;
+}
+.score {
+    margin: -1px 0 0 0;
+}
+
+.results {
+    /*margin: -5px 0 0 0;*/
+}
+
+.highlight-score {
+    font-size: 1.4em;
+    color: #31597f
+    text-shadow: 2px 2px 3px #848c94;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+.new-game,
+.next-level,
+.continue {
+    width: 220px;
+    height: 48px;
+    margin: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5em;
+    color: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    transition: .3s ease-out;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+.next-level,
+.continue {
+    background: #26a69a;
+}
+
+.next-level:hover,
+.continue:hover {
+    background: #2bbbad;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.new-game {
+    background: #0d60ad;
+}
+
+.new-game:hover {
+    background: #297ece;
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+
+/********************************
+    ANIMATIONS
+*********************************/
+
+/*animations from Animate.CSS */
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes shake {
+    from,
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0) ;
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0);
+    }
+}
+
+@keyframes shake {
+    from,
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translate3d(-10px, 0, 0) ;
+        transform: translate3d(-10px, 0, 0);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translate3d(10px, 0, 0) ;
+        transform: translate3d(10px, 0, 0);
+    }
+}
+
+.shake {
+    -webkit-animation-name: shake;
+    animation-name: shake;
+}
+
+@-webkit-keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%,
+    20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes tada {
+    from {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+
+    10%,
+    20% {
+        -webkit-transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+
+    to {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.tada {
+    -webkit-animation-name: tada;
+    animation-name: tada;
+}
+
+.panelFixUp {
+  -webkit-transform: translate3d(0, -130px, 0);
+    transform: translate3d(0, -130px, 0);
+}
+
+.panelFixDown {
+  -webkit-transform: translate3d(0, 130px, 0);
+    transform: translate3d(0, 130px, 0);
+}
+
+/********************************
+    MEDIA QUERIES
+*********************************/
+
+@media screen and (min-width:481px) {
+
+    header {
+        display:  block;
+        width: 95%;
+    }
+
+    .logo {
+        float: left;
+    }
+
+    h1 {
+        float: right;
+    }
+    .score-panel {
+        width: 95%;
+    }
+
+    .deck .card {
+        height: 90px;
+        width: 90px;
+    }
+
+    .card-logo {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+
+}
+
+@media screen   and (max-height: 480px)
+                and (orientation: landscape) {
+
+    .panelFixUp {
+        -webkit-transform: translate3d(0, -80px, 0);
+        transform: translate3d(0, -80px, 0);
+    }
+
+    .panelFixDown {
+        -webkit-transform: translate3d(0, 80px, 0);
+        transform: translate3d(0, 80px, 0);
+    }
+
+    .deck .card {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+
+@media screen and (min-width:768px) {
+
+    header {
+        width: 660px;
+    }
+
+    .score-panel {
+        width: 660px;
+    }
+
+    .reduced {
+        display: none;
+    }
+
+    .deck {
+        max-width: 660px;
+    }
+
+    .deck .card {
+        height: 110px;
+        width: 110px;
+    }
+
+    .card-logo {
+        transform: translate(-50%, -50%) scale(0.85);
+    }
+
+}
+
+
+@media screen and (min-width:1024px) {
+
+    header {
+        width: 660px;
+    }
+
+    .score-panel {
+        width: 660px;
+    }
+
+    .reduced {
+        display: none;
+    }
+
+    .deck {
+        max-width: 660px;
+    }
+
+    .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+
+    .card-logo {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
 }
