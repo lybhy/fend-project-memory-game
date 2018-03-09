@@ -2,10 +2,10 @@
 
 ## Table of Contents
 
-* [Game Instructions](#Game Instructions)
+* [GameInstructions](#GameInstructions)
 * [Contributing](#contributing)
 
-## Game Instructions
+## GameInstructions
 
 To start a New Game open the index.html file.
 
