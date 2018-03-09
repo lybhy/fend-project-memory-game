@@ -1,86 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Matching Game</title>
-    <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet" href="css/app.css">
-</head>
-<body>
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <link rel="stylesheet" href="css/app.css">
+    <title>lybhy's MemoGame</title>
+</head>
+
+<body>
     <div class="container">
         <header>
-            <h1>Matching Game</h1>
+            <section class="title">
+                <div class="logo"><img src="http://res.cloudinary.com/lybhy/image/upload/c_scale,w_200/v1519307981/file-1_ive0q8.png" alt="full logo"></div>
+                <h1 class="">MemoGame</h1>
+            </section>
+            <section class="score-panel">
+                <div class="progress">
+                    <ul class="stars">
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                        <li><i class="fas fa-star"></i></li>
+                    </ul>
+                    <span class="moves">0</span> Moves <i class="fas fa-stopwatch"></i> Timer: <span class="timer"><span class="minutes">00</span>:<span class="seconds">00</span></span>
+                </div>
+                <div class="level-holder">
+                    Level <span class="level">0</span>
+                </div>
+            </section>
         </header>
-
-        <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-        	<span class="moves">3</span> Moves
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+        <section class="game-options">
+            <span class="restart">
+                <i class="fas fa-redo-alt"></i>
+            </span>
+            <span class="pause">
+                <i class="fas fa-pause-circle"></i>
+            </span>
+            <span class="start-new">
+            new game
+            </span>
         </section>
-
-        <ul class="deck">
+        <section class="reduced">
+            <i class="fas fa-arrows-alt-v"></i>
+        </section>
+         <ul class="deck">
             <li class="card">
-                <i class="fa fa-diamond"></i>
+                <i class="fab fa-amazon"></i>
             </li>
             <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
+                <i class="fab fa-amazon"></i>
             </li>
             <li class="card match">
-                <i class="fa fa-anchor"></i>
+                <i class="fab fa-angular"></i>
             </li>
             <li class="card">
-                <i class="fa fa-bolt"></i>
+                <i class="fab fa-angular"></i>
             </li>
             <li class="card">
-                <i class="fa fa-cube"></i>
+                <i class="fab fa-apple"></i>
             </li>
             <li class="card match">
-                <i class="fa fa-anchor"></i>
+                <i class="fab fa-apple"></i>
             </li>
             <li class="card">
-                <i class="fa fa-leaf"></i>
+                <i class="fab fa-android"></i>
             </li>
             <li class="card">
-                <i class="fa fa-bicycle"></i>
+                <i class="fab fa-android"></i>
             </li>
             <li class="card">
-                <i class="fa fa-diamond"></i>
+                <i class="fab fa-bitcoin"></i>
             </li>
             <li class="card">
-                <i class="fa fa-bomb"></i>
+                <i class="fab fa-bitcoin"></i>
             </li>
             <li class="card">
-                <i class="fa fa-leaf"></i>
+                <i class="fab fa-codepen"></i>
             </li>
             <li class="card">
-                <i class="fa fa-bomb"></i>
+                <i class="fab fa-codepen"></i>
             </li>
             <li class="card open show">
-                <i class="fa fa-bolt"></i>
+                <i class="fab fa-earlybirds"></i>
             </li>
             <li class="card">
-                <i class="fa fa-bicycle"></i>
+                <i class="fab fa-earlybirds"></i>
             </li>
             <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
+                <i class="fab fa-github"></i>
             </li>
             <li class="card">
-                <i class="fa fa-cube"></i>
+                <i class="fab fa-github"></i>
             </li>
         </ul>
     </div>
-
+    <div class="level-container">
+        <div class="won-message">
+            <p class="won-title">
+                <h2>GREAT!</h2></p>
+            <p>
+                <h3>ONE LEVEL AHEAD</h3></p>
+            <p class="winner-thumb"><i class="fas fa-thumbs-up"></i></p>
+            <ul class="level-wstars">
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+            </ul>
+            <p class="score">Awesome!</p>
+            <p class="results">You made it with <span class="highlight-score"><span class="level-wmoves">0</span> Moves</span> and you took <span class="highlight-score"><span class="level-wtime"></span> Seconds</span>
+            </p>
+            <div class="buttons">
+                <button class="new-game">NEW GAME</button>
+                <br>
+                <button class="next-level">Next Level</button>
+            </div>
+        </div>
+    </div>
+    <div class="winner-container">
+        <div class="won-message">
+            <p class="won-title">
+                <h2>YOU ARE A WINNER!</h2></p>
+            <p>
+                <h3>CONGRATS</h3></p>
+            <p class="winner-cup"><i class="fas fa-trophy"></i></p>
+            <ul class="win-stars">
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+                <li><i class="fas fa-star"></i></li>
+            </ul>
+            <p class="score">Awesome!</p>
+            <p>You made it with <span class="highlight-score"><span class="win-moves">0</span> Moves</span> and you took <span class="highlight-score"><span class="win-time"></span> Seconds</span>
+            </p>
+            <button class="new-game">NEW GAME</button>
+        </div>
+    </div>
+    <div class="pause-container">
+        <div class="pause-message">
+            <p class="pause-title">
+                <h2>GAME PAUSED</h2></p>
+            <p class="pause-symbol"><i class="fas fa-pause-circle"></i></p>
+            <div class="buttons">
+                <button class="new-game">NEW GAME</button>
+                <br>
+                <button class="continue">CONTINUE</button>
+            </div>
+        </div>
+    </div>
     <script src="js/app.js"></script>
 </body>
+
 </html>
