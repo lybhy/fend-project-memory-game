@@ -5,16 +5,15 @@
 * [Instructions](#instructions)
 * [Contributing](#contributing)
 
-## Instructions
+## Game Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+To start a New Game open the index.html file.
 
-To get started, open `js/app.js` and start building out the app's functionality
+The purpouse of the game is to conclude all levels finding on each level all pairs.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Click on a card to show the card. Clicking on another card you will search for the pair. If the two opened cards are the same, they will switch to green, if not they will be closed until you found a pair of cards. The level is won, if all cards on the board are paired. After that, you can start the next level. If the last level is won, you are a WINNER.
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This repository is the third project for the Front-End Nanodegree Programm at Udacity. Therefore, I couldn't accept pull requests.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
