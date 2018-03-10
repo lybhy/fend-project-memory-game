@@ -191,6 +191,22 @@ function matching() {
                 setTimeout(function() {
                     statusHide();
                 }, 1500);
+                seconds = seconds+5;
+                if (seconds < 9) {
+                    appendSeconds.innerHTML = "0" + seconds;
+                }
+                if (seconds > 9) {
+                    appendSeconds.innerHTML = seconds;
+                }
+                if (seconds > 59) {
+                    minutes++;
+                    appendMinutes.innerHTML = "0" + minutes;
+                    seconds = 0;
+                    appendSeconds.innerHTML = "0" + 0;
+                }
+                if (minutes > 9) {
+                    appendMinutes.innerHTML = minutes;
+                }
             }
         }
         openCardArray = [];
@@ -323,8 +339,14 @@ function status1Hide() {
 }
 //hide the start message
 function hideStart() {
-    document.querySelector('.start').setAttribute('style', 'display: none');
-    document.querySelector('.start1').setAttribute('style', 'display: none');
+    if (level > 3) {
+        level
+        document.querySelector('.start').setAttribute('style', 'display: none');
+        document.querySelector('.start1').setAttribute('style', 'display: none');
+    }
+}
+function closeLev5() {
+    document.querySelector('.level5').setAttribute('style', 'display: none');
 }
 
 
@@ -337,22 +359,24 @@ function nextLevel() {
     reducedCardArray = [];
     doubleArray = [];
     moves = 0;
-    if (level < 4) {
+    levelIncrement();
+    hideStart();
+    if (level < 5) {
         clearInterval(Interval);
         seconds = "00";
         minutes = "00";
         appendSeconds.innerHTML = seconds;
         appendMinutes.innerHTML = minutes;
+    } else if (level ===5) {
+        clearInterval(Interval);
+        document.querySelector('.level5').setAttribute('style', 'display: block');
+        document.querySelector('.close-level5').addEventListener('click', closeLev5);
     } else {
         clearInterval(Interval);
-        /*seconds = timeToWin;
-        minutes = "00";
-        appendSeconds.innerHTML = seconds;
-        appendMinutes.innerHTML = minutes;*/
     }
     document.querySelector('.container').setAttribute('style', 'display: flex');
     document.querySelector('.level-container').setAttribute('style', 'display: none');
-    levelIncrement();
+
     shuffle(cardElements);
     reduceArray(cardElements);
     doubled(reducedCardArray);
