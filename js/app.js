@@ -137,6 +137,10 @@ let clickCounter = 0;
 
 function open() {
     clickCounter += 1;
+    if(level > 4) {
+        clearInterval(timeCheck);
+        timeCheck = setInterval(timeRunner, 1000);
+    }
     if (clickCounter === 1 && level < 5) {
         t0 = performance.now();
         clearInterval(Interval);
@@ -156,8 +160,6 @@ function open() {
         }
         matching();
         winner();
-        clearInterval(timeCheck);
-        timeCheck = setInterval(timeRunner, 1000);
     }
 }
 
@@ -207,7 +209,7 @@ function matching() {
 }
 
 function timeRunner() {
-    if (level > 4 && appendMinutes.innerHTML === "00" && appendSeconds.innerHTML === "00") {
+    if (appendMinutes.innerHTML === "00" && appendSeconds.innerHTML === "00") {
         document.querySelector('.lose').setAttribute('style', 'display: block');
         clearInterval(timeCheck);
     } else {
