@@ -207,7 +207,7 @@ function matching() {
 }
 
 function timeRunner() {
-    if (appendMinutes.innerHTML === "00" && appendSeconds.innerHTML === "00") {
+    if (level > 4 && appendMinutes.innerHTML === "00" && appendSeconds.innerHTML === "00") {
         document.querySelector('.lose').setAttribute('style', 'display: block');
         clearInterval(timeCheck);
     } else {
