@@ -216,7 +216,8 @@ h1 {
 .winner-container,
 .level-container,
 .pause-container,
-.lose {
+.lose,
+.level5 {
     position: absolute;
     top: 0;
     z-index: 99;
@@ -228,7 +229,8 @@ h1 {
 
 .won-message,
 .pause-message,
-.lose-message {
+.lose-message,
+.level5-message {
     width: 80%;
     max-width: 660px;
     position: absolute;
@@ -270,6 +272,12 @@ h1 {
     font-size: 8em;
 }
 
+.level5-symbol {
+    color: #31597f;
+    font-size: 8em;
+    margin: -10px 0;
+}
+
 .winner-thumb {
     color: #31597f;
     font-size: 6em;
@@ -297,7 +305,8 @@ h1 {
 
 .new-game,
 .next-level,
-.continue {
+.continue,
+.close-level5 {
     width: 220px;
     height: 48px;
     margin: 5px;
@@ -313,12 +322,14 @@ h1 {
 }
 
 .next-level,
-.continue {
+.continue,
+.close-level5 {
     background: #26a69a;
 }
 
 .next-level:hover,
-.continue:hover {
+.continue:hover,
+.close-level5:hover {
     background: #2bbbad;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
@@ -370,11 +381,9 @@ h1 {
 
 .start1 {
     color: #ed3131;
-    margin-top: 30px;
+    margin-top: 10px;
     font-weight: bold;
 }
-
-
 
 /********************************
     ANIMATIONS
