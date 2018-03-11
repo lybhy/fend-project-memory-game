@@ -177,7 +177,6 @@ h1 {
 .game-options .start-new,
 .game-options .pause,
 .game-options .restart {
-    /*float: right;*/
     margin: 10px;
     cursor: pointer
 }
@@ -780,6 +779,7 @@ h1 {
 
     .deck {
         width: 490px;
+        margin-top: -30px;
     }
 
     .deck .card {
@@ -796,11 +796,11 @@ h1 {
 @media screen and (min-width:1025px) {
 
     header {
-        width: 660px;
+        width: 800px;
     }
 
     .score-panel {
-        width: 660px;
+        width: 800px;
     }
 
     .reduced {
@@ -808,7 +808,8 @@ h1 {
     }
 
     .deck {
-        width: 660px;
+        width: 550px;
+        margin-top: -50px;
     }
 
     .deck .card {
