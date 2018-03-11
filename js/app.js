@@ -1,4 +1,4 @@
- /******************************************************
+/******************************************************
     M A I N   F U N C T I O N S   F O R   C A R D S
  *****************************************************/
 
@@ -282,6 +282,9 @@ function open() {
         openCardArray.push(this);
         for (let i = 0; i < openCardArray.length; i++) {
             openCardArray[i].classList.add('open', 'show', 'disabled');
+            //delete background to show card properly
+            openCardArray[i].setAttribute('style', 'background-image: none');
+
         }
         matching();
         winner();
@@ -295,6 +298,8 @@ function close() {
             //do nothing
         } else {
             cardArray[i].classList.remove('open', 'show', 'unmatched', 'animated', 'shake', 'disabled');
+            //add card background
+            cardArray[i].setAttribute('style', 'background-image: url("./img/'+cardDesign[randomBack]+'")');
         }
     }
 }
@@ -392,11 +397,12 @@ const cardDesign = ['houndstooth.svg',
     'dark_embroidery.png', 'dark-triangles.png', 'doodles.png',
     'halftone-yellow.png', 'wormz.png'];
 
+let randomBack = Math.floor(Math.random() * 6);
+
 function cardChange() {
-    let random = Math.floor(Math.random() * 6);
     let cardBack = document.getElementsByClassName('card');
     for (var i = 0; i < cardBack.length; i++) {
-        cardBack[i].setAttribute('style', 'background-image: url("./img/'+cardDesign[random]+'")');
+        cardBack[i].setAttribute('style', 'background-image: url("./img/'+cardDesign[randomBack]+'")');
     }
 }
 
