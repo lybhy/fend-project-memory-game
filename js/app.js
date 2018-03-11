@@ -1,4 +1,4 @@
-/******************************************************
+ /******************************************************
     M A I N   F U N C T I O N S   F O R   C A R D S
  *****************************************************/
 
@@ -394,7 +394,10 @@ const cardDesign = ['houndstooth.svg',
 
 function cardChange() {
     let random = Math.floor(Math.random() * 6);
-    document.querySelector('.card').setAttribute('style', 'background-image: url("../img/'+cardDesign[random]+'")');
+    let cardBack = document.getElementsByClassName('card');
+    for (var i = 0; i < cardBack.length; i++) {
+        cardBack[i].setAttribute('style', 'background-image: url("./img/'+cardDesign[random]+'")');
+    }
 }
 
 
