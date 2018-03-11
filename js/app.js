@@ -31,7 +31,6 @@ let level = 0;
 function levelIncrement() {
     level += 1;
     document.querySelector('.level').innerHTML = level;
-    //console.log(level);
 }
 
 //set level (for playing without tutorial)
@@ -488,7 +487,6 @@ function nextLevel() {
             appendSeconds.innerHTML = seconds;
         }
         if (seconds > 59) {
-            //console.log("minutes");
             minutes++;
             appendMinutes.innerHTML = "0" + minutes;
             seconds = 0;
@@ -525,6 +523,25 @@ document.addEventListener('DOMContentLoaded', function() {
     shuffle(doubleArray)
     createDeck();
     setCurrentCards();
+    //set the goal time on Arcade Mode
+    if (tutorial === 0) {
+        timeSet();
+        if (seconds < 9) {
+            appendSeconds.innerHTML = "0" + seconds;
+        }
+        if (seconds > 9) {
+            appendSeconds.innerHTML = seconds;
+        }
+        if (seconds > 59) {
+            minutes++;
+            appendMinutes.innerHTML = "0" + minutes;
+            seconds = 0;
+            appendSeconds.innerHTML = "0" + 0;
+        }
+        if (minutes > 9) {
+            appendMinutes.innerHTML = minutes;
+        }
+    }
     document.querySelector('.restart').addEventListener('click', restartCurrent);
     let newGameButton = document.getElementsByClassName('new-game');
     for (let i = 0; i < newGameButton.length; i++) {
