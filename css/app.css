@@ -209,7 +209,8 @@ h1 {
 
 /********************************
    Styles for the Winner Panel,
-   Level-Up Panel, Pause Panel
+   Level-Up Panel, Pause Panel,
+   START BUTTON
 *********************************/
 
 .winner-container,
@@ -310,7 +311,8 @@ h1 {
 .continue,
 .close-level5,
 .tutorial,
-.play-direct {
+.play-direct,
+.go-game {
     width: 220px;
     height: 48px;
     margin: 5px;
@@ -341,17 +343,26 @@ h1 {
 }
 
 .new-game,
-.play-direct {
+.play-direct,
+.go-game {
     background: #0d60ad;
 }
 
 .new-game:hover,
-.play-direct:hover {
+.play-direct:hover,
+.go-game:hover {
     background: #297ece;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
 
-
+.go-game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 80;
+    display: none;
+}
 
 
 /********************************
