@@ -790,6 +790,12 @@ h1 {
     .card-logo {
         transform: translate(-50%, -50%) scale(0.85);
     }
+
+    .start,
+    .start1,
+    .status1 {
+        margin-top: -30px;
+    }
 }
 
 
@@ -823,4 +829,10 @@ h1 {
     .status {
         font-size: 7em;
     }
+    .start,
+    .start1,
+    .status1 {
+        margin-top: -50px;
+    }
+
 }
