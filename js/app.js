@@ -445,6 +445,8 @@ function tutorialPlay() {
     appendMinutes.innerHTML = "00";
     appendSeconds.innerHTML = "00";
     seconds = 0;
+    //make better fitting of the deck on the screen
+    document.querySelector('.deck').setAttribute('style', 'margin-top: 0px');
 }
 
 //starts Arcade Game
@@ -487,8 +489,8 @@ function nextLevel() {
     shuffle(doubleArray)
     createDeck();
     setCurrentCards();
-    //set the goal time on Arcade Mode
     if (tutorial === 0) {
+        //set the goal time on Arcade Mode
         timeSet();
         if (seconds < 9) {
             appendSeconds.innerHTML = "0" + seconds;
@@ -505,6 +507,8 @@ function nextLevel() {
         if (minutes > 9) {
             appendMinutes.innerHTML = minutes;
         }
+        //make better fitting of the deck on the screen
+        document.querySelector('.deck').setAttribute('style', 'margin-top: -30px');
     }
     if (tutorial === 1) {
         seconds = 0;
@@ -555,6 +559,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (minutes > 9) {
         appendMinutes.innerHTML = minutes;
     }
+    //make better fitting of the deck on the screen
+    document.querySelector('.deck').setAttribute('style', 'margin-top: -30px');
+    //restart event listener
     document.querySelector('.restart').addEventListener('click', restartCurrent);
     let newGameButton = document.getElementsByClassName('new-game');
     for (let i = 0; i < newGameButton.length; i++) {
