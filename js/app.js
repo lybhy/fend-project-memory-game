@@ -87,6 +87,7 @@ function createDeck() {
         listElement.appendChild(cardFigure);
         deck.appendChild(listElement);
     }
+    cardChange();
 }
 //store the current shown card into an Array
 let cardArray = [];
@@ -380,6 +381,20 @@ function winner() {
         lastSeconds["0"].classList.remove('animated');
         lastSeconds["0"].setAttribute('style', 'color: #222');
     }
+}
+
+
+/******************************************************
+    C A R D   D E C K   C H A N G E S
+ *****************************************************/
+
+const cardDesign = ['houndstooth.svg',
+    'dark_embroidery.png', 'dark-triangles.png', 'doodles.png',
+    'halftone-yellow.png', 'wormz.png'];
+
+function cardChange() {
+    let random = Math.floor(Math.random() * 6);
+    document.querySelector('.card').setAttribute('style', 'background-image: url("../img/'+cardDesign[random]+'")');
 }
 
 
