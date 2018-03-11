@@ -237,8 +237,7 @@ function timeRunner() {
         document.querySelector('.lose').setAttribute('style', 'display: block');
         clearInterval(timeCheck);
         clearInterval(Interval);
-        lastSeconds["0"].classList.remove('animated');
-        lastSeconds["0"].setAttribute('style', 'color: #222');
+
     }
     //if there are 10 seconds left, style counter
     if (appendMinutes.innerHTML === "00" && appendSeconds.innerHTML <= "10") {
@@ -549,6 +548,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (minutes > 9) {
             appendMinutes.innerHTML = minutes;
         }
+    } else if (tutorial === 1) {
+        appendSeconds.innerHTML = "00";
+        appendMinutes.innerHTML = "00";
     }
     document.querySelector('.restart').addEventListener('click', restartCurrent);
     let newGameButton = document.getElementsByClassName('new-game');
