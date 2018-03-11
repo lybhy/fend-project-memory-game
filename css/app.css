@@ -217,7 +217,8 @@ h1 {
 .level-container,
 .pause-container,
 .lose,
-.level5 {
+.level5,
+.tutorial-container {
     position: absolute;
     top: 0;
     z-index: 99;
@@ -230,7 +231,8 @@ h1 {
 .won-message,
 .pause-message,
 .lose-message,
-.level5-message {
+.level5-message,
+.tutorial-message {
     width: 80%;
     max-width: 660px;
     position: absolute;
@@ -272,7 +274,8 @@ h1 {
     font-size: 8em;
 }
 
-.level5-symbol {
+.level5-symbol,
+.tutorial-symbol {
     color: #31597f;
     font-size: 8em;
     margin: -10px 0;
@@ -306,7 +309,9 @@ h1 {
 .new-game,
 .next-level,
 .continue,
-.close-level5 {
+.close-level5,
+.tutorial,
+.play-direct {
     width: 220px;
     height: 48px;
     margin: 5px;
@@ -323,22 +328,26 @@ h1 {
 
 .next-level,
 .continue,
-.close-level5 {
+.close-level5,
+.tutorial {
     background: #26a69a;
 }
 
 .next-level:hover,
 .continue:hover,
-.close-level5:hover {
+.close-level5:hover,
+.tutorial:hover {
     background: #2bbbad;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
 
-.new-game {
+.new-game,
+.play-direct {
     background: #0d60ad;
 }
 
-.new-game:hover {
+.new-game:hover,
+.play-direct:hover {
     background: #297ece;
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
@@ -358,7 +367,7 @@ h1 {
     z-index: 11000;
     display: none;
     color: #ed3131;
-    font-size: 8em;
+    font-size: 4em;
 }
 
 .status .fa-heart {
@@ -399,6 +408,12 @@ h1 {
     animation-fill-mode: both;
 }
 
+.infinite {
+    -webkit-animation-duration: infinite;
+    animation-duration: infinite;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
 
 @-webkit-keyframes pulse {
     rom {
@@ -689,6 +704,10 @@ h1 {
     .card-logo {
         transform: translate(-50%, -50%) scale(0.7);
     }
+
+    .status {
+        font-size: 6em;
+    }
 }
 
 @media screen and (max-height: 480px) and (orientation: landscape) {
@@ -774,5 +793,8 @@ h1 {
 
     .card-logo {
         transform: translate(-50%, -50%) scale(1);
+    }
+    .status {
+        font-size: 7em;
     }
 }
