@@ -323,7 +323,7 @@ function matching() {
                 setTimeout(function() {
                     statusHide();
                 }, 1500);
-                seconds = seconds+5;
+                seconds = seconds + 5;
                 if (seconds < 9) {
                     appendSeconds.innerHTML = "0" + seconds;
                 }
@@ -345,7 +345,7 @@ function matching() {
         openCardArray = [];
         //count the move
         moveCounter();
-    //if they doens't match, they should be closed after enough time looking at them
+        //if they doens't match, they should be closed after enough time looking at them
     } else if (openCardArray.length === 2 && openCardArray["0"].children["0"].className != openCardArray["1"].children["0"].className) {
         //styles unmatched
         openCardArray["0"].classList.add('unmatched', 'animated', 'shake');
@@ -437,11 +437,14 @@ function reduced() {
  *****************************************************/
 
 //starts Tutorial
-function tutorialPlay(){
+function tutorialPlay() {
     tutorial = 1;
     document.querySelector('.tutorial-container').setAttribute('style', 'display: none');
     setLevel(0);
     nextLevel();
+    appendMinutes.innerHTML = "00";
+    appendSeconds.innerHTML = "00";
+    seconds = 0;
 }
 
 //starts Arcade Game
@@ -531,26 +534,21 @@ document.addEventListener('DOMContentLoaded', function() {
     createDeck();
     setCurrentCards();
     //set the goal time on Arcade Mode
-    if (tutorial === 0) {
-        timeSet();
-        if (seconds < 9) {
-            appendSeconds.innerHTML = "0" + seconds;
-        }
-        if (seconds > 9) {
-            appendSeconds.innerHTML = seconds;
-        }
-        if (seconds > 59) {
-            minutes++;
-            appendMinutes.innerHTML = "0" + minutes;
-            seconds = 0;
-            appendSeconds.innerHTML = "0" + 0;
-        }
-        if (minutes > 9) {
-            appendMinutes.innerHTML = minutes;
-        }
-    } else if (tutorial === 1) {
-        appendSeconds.innerHTML = "00";
-        appendMinutes.innerHTML = "00";
+    timeSet();
+    if (seconds < 9) {
+        appendSeconds.innerHTML = "0" + seconds;
+    }
+    if (seconds > 9) {
+        appendSeconds.innerHTML = seconds;
+    }
+    if (seconds > 59) {
+        minutes++;
+        appendMinutes.innerHTML = "0" + minutes;
+        seconds = 0;
+        appendSeconds.innerHTML = "0" + 0;
+    }
+    if (minutes > 9) {
+        appendMinutes.innerHTML = minutes;
     }
     document.querySelector('.restart').addEventListener('click', restartCurrent);
     let newGameButton = document.getElementsByClassName('new-game');
