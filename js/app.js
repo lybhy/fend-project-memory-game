@@ -401,11 +401,30 @@ let randomBack = Math.floor(Math.random() * 6);
 
 function cardChange() {
     let cardBack = document.getElementsByClassName('card');
-    for (var i = 0; i < cardBack.length; i++) {
+    for (let i = 0; i < cardBack.length; i++) {
         cardBack[i].setAttribute('style', 'background-image: url("./img/'+cardDesign[randomBack]+'")');
     }
 }
 
+
+/******************************************************
+    S H O W    C A R D S    A T   S T A R T
+ *****************************************************/
+
+function showTime() {
+    for (let i = 0; i < cardArray.length; i++) {
+        cardArray[i].classList.add('open', 'show', 'disabled');
+        cardArray[i].setAttribute('style', 'background-image: none');
+    }
+}
+
+function starter() {
+    document.querySelector('.go-game').setAttribute('style', 'display: none');
+    showTime();
+    setTimeout(function() {
+        close();
+    }, 1500);
+}
 
 /******************************************************
     C O M U N I C A T I O N S
@@ -545,6 +564,9 @@ function nextLevel() {
     }
     //show deck with cards
     document.querySelector('.container').setAttribute('style', 'display: flex');
+    //make start button-visible
+    document.querySelector('.go-game').setAttribute('style', 'display: block');
+
 }
 
 //restart all
@@ -554,7 +576,7 @@ function restartAll() {
 
 //restart current level
 function restartCurrent() {
-
+    //TODO write code for level restart
 }
 
 //global start event listeners and function calls
@@ -585,8 +607,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     //make better fitting of the deck on the screen
     document.querySelector('.deck').setAttribute('style', 'margin-top: -30px');
-    //restart event listener
-    document.querySelector('.restart').addEventListener('click', restartCurrent);
+    //make start button-visible
+    document.querySelector('.go-game').setAttribute('style', 'display: block');
+    document.querySelector('.go-game').addEventListener('click', starter);
+
+    //TODO restart event listener
+    //document.querySelector('.restart').addEventListener('click', restartCurrent);
     let newGameButton = document.getElementsByClassName('new-game');
     for (let i = 0; i < newGameButton.length; i++) {
         newGameButton[i].addEventListener('click', restartAll);
