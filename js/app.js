@@ -506,6 +506,11 @@ function nextLevel() {
             appendMinutes.innerHTML = minutes;
         }
     }
+    if (tutorial === 1) {
+        seconds = 0;
+        appendSeconds.innerHTML = "00";
+        appendMinutes.innerHTML = "00";
+    }
     //set click event (open card)
     for (let i = 0; i < cardArray.length; i++) {
         cardArray[i].addEventListener('click', open);
