@@ -80,7 +80,6 @@ function createDeck() {
     const deck = document.querySelector('.deck');
     deck.innerHTML = "";
     for (let i = 0; i < doubleArray.length; i++) {
-        console.log(doubleArray[i]);
         let listElement = document.createElement('li');
         listElement.classList.add('card');
         let cardFigure = document.createElement('i');
@@ -220,7 +219,6 @@ function stopWatch() {
         appendSeconds.innerHTML = seconds;
     }
     if (seconds > 59) {
-        //console.log("minutes");
         minutes++;
         appendMinutes.innerHTML = "0" + minutes;
         seconds = 0;
@@ -231,13 +229,19 @@ function stopWatch() {
     }
 }
 
-//verifies the time in arcade mode: if time is out, game is lost
+//verifies the time in arcade mode
 function timeRunner() {
+    //if time is out, game is lost
     if (appendMinutes.innerHTML === "00" && appendSeconds.innerHTML === "00") {
         document.querySelector('.lose').setAttribute('style', 'display: block');
         clearInterval(timeCheck);
-    } else {
-        console.log('check');
+        clearInterval(Interval);
+    }
+    //if there are 10 seconds left, style counter
+    if (appendMinutes.innerHTML === "00" && appendSeconds.innerHTML <= "10") {
+        const lastSeconds = document.getElementsByClassName('timer');
+        lastSeconds["0"].classList.add('animated', 'infinite', 'pulse');
+        lastSeconds["0"].setAttribute('style', 'color: #ed3131');
     }
 }
 
