@@ -229,6 +229,7 @@ function stopWatch() {
     }
 }
 
+const lastSeconds = document.getElementsByClassName('time');
 //verifies the time in arcade mode
 function timeRunner() {
     //if time is out, game is lost
@@ -236,11 +237,12 @@ function timeRunner() {
         document.querySelector('.lose').setAttribute('style', 'display: block');
         clearInterval(timeCheck);
         clearInterval(Interval);
+        lastSeconds["0"].classList.remove('animated');
+        lastSeconds["0"].setAttribute('style', 'color: #222');
     }
     //if there are 10 seconds left, style counter
     if (appendMinutes.innerHTML === "00" && appendSeconds.innerHTML <= "10") {
-        const lastSeconds = document.getElementsByClassName('timer');
-        lastSeconds["0"].classList.add('animated', 'infinite', 'pulse');
+        lastSeconds["0"].classList.add('animated');
         lastSeconds["0"].setAttribute('style', 'color: #ed3131');
     }
 }
@@ -376,6 +378,8 @@ function winner() {
             document.querySelector('.level-wtime').innerHTML = stopedTime;
         }, 1500)
         clearInterval(Interval);
+        lastSeconds["0"].classList.remove('animated');
+        lastSeconds["0"].setAttribute('style', 'color: #222');
     }
 }
 
