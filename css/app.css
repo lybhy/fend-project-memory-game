@@ -779,7 +779,7 @@ h1 {
 
     .deck {
         width: 490px;
-        margin-top: -30px;
+        margin-top: 0px;
     }
 
     .deck .card {
@@ -791,10 +791,10 @@ h1 {
         transform: translate(-50%, -50%) scale(0.85);
     }
 
-    .start,
+    .start/*,
     .start1,
-    .status1 {
-        margin-top: -30px;
+    .status1*/ {
+        margin-top: -40px;
     }
 }
 
@@ -815,7 +815,7 @@ h1 {
 
     .deck {
         width: 550px;
-        margin-top: -50px;
+        margin-top: 0px;
     }
 
     .deck .card {
@@ -829,10 +829,8 @@ h1 {
     .status {
         font-size: 7em;
     }
-    .start,
-    .start1,
-    .status1 {
-        margin-top: -50px;
+    .start {
+        margin-top: -30px;
     }
 
 }
