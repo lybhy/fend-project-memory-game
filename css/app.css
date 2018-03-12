@@ -218,7 +218,8 @@ h1 {
 .pause-container,
 .lose,
 .level5,
-.tutorial-container {
+.tutorial-container,
+.start-container {
     position: absolute;
     top: 0;
     z-index: 99;
