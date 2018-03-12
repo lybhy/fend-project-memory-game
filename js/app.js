@@ -88,6 +88,7 @@ function createDeck() {
         deck.appendChild(listElement);
     }
     cardChange();
+    console.log('changed');
 }
 //store the current shown card into an Array
 let cardArray = [];
@@ -208,11 +209,26 @@ function timeSet() {
     timeToWin = defaultTime - level;
     seconds = timeToWin;
     return seconds;
+    minutes = 0;
+     //set parameters on how to write minutes and seconds
+    if (seconds < 9) {
+        appendSeconds.innerHTML = "0" + seconds;
+    }
+    if (seconds > 9) {
+        appendSeconds.innerHTML = seconds;
+    }
 }
 
 //stopwatch function shows the time if playing arcade (no tutorial)
 function stopWatch() {
-    seconds--;
+    //decrement seconds
+    if (minutes > 0 && seconds === 0) {
+        minutes--;
+        seconds = 59;
+    } else {
+        seconds--;
+    }
+    //set parameters on how to write minutes and seconds
     if (seconds < 9) {
         appendSeconds.innerHTML = "0" + seconds;
     }
@@ -330,21 +346,6 @@ function matching() {
                     statusHide();
                 }, 1500);
                 seconds = seconds + 5;
-                if (seconds < 9) {
-                    appendSeconds.innerHTML = "0" + seconds;
-                }
-                if (seconds > 9) {
-                    appendSeconds.innerHTML = seconds;
-                }
-                if (seconds > 59) {
-                    minutes++;
-                    appendMinutes.innerHTML = "0" + minutes;
-                    seconds = 0;
-                    appendSeconds.innerHTML = "0" + 0;
-                }
-                if (minutes > 9) {
-                    appendMinutes.innerHTML = minutes;
-                }
             }
         }
         //after checked they matched, empty the array
@@ -390,16 +391,17 @@ function winner() {
 
 
 /******************************************************
-    C A R D   D E C K   C H A N G E S
+    C A R D   D E S I G N   C H A N G E S
  *****************************************************/
 
 const cardDesign = ['houndstooth.svg',
     'dark_embroidery.png', 'dark-triangles.png', 'doodles.png',
     'halftone-yellow.png', 'wormz.png'];
 
-let randomBack = Math.floor(Math.random() * 6);
+let randomBack;
 
 function cardChange() {
+    randomBack = Math.floor(Math.random() * 6);
     let cardBack = document.getElementsByClassName('card');
     for (let i = 0; i < cardBack.length; i++) {
         cardBack[i].setAttribute('style', 'background-image: url("./img/'+cardDesign[randomBack]+'")');
@@ -419,6 +421,7 @@ function showTime() {
 }
 
 function starter() {
+    document.querySelector('.start-container').setAttribute('style', 'display: none');
     document.querySelector('.go-game').setAttribute('style', 'display: none');
     showTime();
     setTimeout(function() {
@@ -535,26 +538,12 @@ function nextLevel() {
     if (tutorial === 0) {
         //set the goal time on Arcade Mode
         timeSet();
-        if (seconds < 9) {
-            appendSeconds.innerHTML = "0" + seconds;
-        }
-        if (seconds > 9) {
-            appendSeconds.innerHTML = seconds;
-        }
-        if (seconds > 59) {
-            minutes++;
-            appendMinutes.innerHTML = "0" + minutes;
-            seconds = 0;
-            appendSeconds.innerHTML = "0" + 0;
-        }
-        if (minutes > 9) {
-            appendMinutes.innerHTML = minutes;
-        }
         //make better fitting of the deck on the screen
         document.querySelector('.deck').setAttribute('style', 'margin-top: -30px');
     }
     if (tutorial === 1) {
         seconds = 0;
+        minutes = 0;
         appendSeconds.innerHTML = "00";
         appendMinutes.innerHTML = "00";
     }
@@ -565,8 +554,8 @@ function nextLevel() {
     //show deck with cards
     document.querySelector('.container').setAttribute('style', 'display: flex');
     //make start button-visible
+    document.querySelector('.start-container').setAttribute('style', 'display: block');
     document.querySelector('.go-game').setAttribute('style', 'display: block');
-
 }
 
 //restart all
@@ -590,25 +579,11 @@ document.addEventListener('DOMContentLoaded', function() {
     setCurrentCards();
     //set the goal time on Arcade Mode
     timeSet();
-    if (seconds < 9) {
-        appendSeconds.innerHTML = "0" + seconds;
-    }
-    if (seconds > 9) {
-        appendSeconds.innerHTML = seconds;
-    }
-    if (seconds > 59) {
-        minutes++;
-        appendMinutes.innerHTML = "0" + minutes;
-        seconds = 0;
-        appendSeconds.innerHTML = "0" + 0;
-    }
-    if (minutes > 9) {
-        appendMinutes.innerHTML = minutes;
-    }
     //make better fitting of the deck on the screen
     document.querySelector('.deck').setAttribute('style', 'margin-top: -30px');
     //make start button-visible
     document.querySelector('.go-game').setAttribute('style', 'display: block');
+    document.querySelector('.start-container').setAttribute('style', 'display: block');
     document.querySelector('.go-game').addEventListener('click', starter);
 
     //TODO restart event listener
